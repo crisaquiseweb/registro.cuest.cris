@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGISTRAR CUESTIONAMIENTO</title>
+<style>
+       body {
+    font-family: sans-serif;
+    background-color: #f4f4f4; /* Color de fondo general de la página */
+    display: flex; /* Habilita Flexbox para el body */
+    justify-content: center; /* Centra horizontalmente los elementos hijos */
+    align-items: center; /* Centra verticalmente los elementos hijos */
+    min-height: 100vh; /* Asegura que el body ocupe al menos toda la altura de la ventana */
+    margin: 0; /* Elimina el margen predeterminado del body */
+}
+.login-container {
+    background-color: #fff; /* Fondo blanco para el contenedor de login */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Centra el texto dentro del contenedor de login */
+}
+
+
+       .login-container {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 50px;
+            margin-left: auto; /* Para centrar horizontalmente */
+            margin-right: auto; /* Para centrar horizontalmente */
+        }
+
+
+       .form-group input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form-group button {
+         background-color: #007bff;
+ color: white;
+ padding: 12px 20px;
+ border: none;
+ border-radius: 8px;
+ cursor: pointer;
+ font-size: 1.1em;
+ transition: background-color 0.3s ease;
+ width: 100%;
+        }
+
+.form-group button:hover {
+            background-color: #0056b3;
+        }
+
+        .main-page {
+            display: none; /* Hidden by default */
+            background-color: #f4f4f4;
+            font-family: sans-serif;
+            padding: 20px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+
+       .user-info {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+         .user-info img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .user-actions button {
+            background-color: #6c757d;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+            margin-right: 10px;
+        }
+
+         .user-actions button:hover {
+            background-color: #5a6268;
+        }
+
+        #change-name-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+
+         .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+         .modal-content input[type="text"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+        .modal-content button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+            margin: 0 5px;
+        }
+
+
+        .modal-content button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #007bff;
+            margin-top: 0;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            text-align: center;
+            color: black;
+            margin-top: -10px;
+        }
+
+        .section-title {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            color: #495057;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        .section-title:nth-child(3) {
+            background-color: #6d9eeb;
+            color: black;
+        }
+        .section-title:nth-child(6), .section-title:nth-child(9) {
+            background-color: #a4c2f4;
+            color: black;
+            font-size: 12px;
+        }
+        .section-title:nth-child(18) {
+            background-color: #6d9eeb;
+            color: black;
+        }
+        .section-title:nth-child(29) {
+            background-color: #6d9eeb;
+            color: black;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .form-group label {
+            flex-basis: 30%;
+            margin-right: 10px;
+            text-align: left;
+            font-weight: bold;
+            color: #343a40;
+            font-size: 0.9em;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="number"],
+        .form-group select,
+        .form-group textarea {
+            flex-basis: 65%;
+            padding: 5px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 0.9em;
+        }
+        .form-group input#domicilio {
+            margin-left: -168px;
+        }
+        .form-group.inline-fields > div input[type="text"] {
+            max-width: 155px;
+        }
+
+        .form-group input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        .form-group .radio-group label {
+            font-weight: normal;
+            margin-right: 15px;
+        }
+
+        .form-group .checkbox-group label {
+            font-weight: normal;
+            margin-right: 15px;
+        }
+
+        .form-group.inline-fields > div {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+
+        .form-group.inline-fields > div label {
+            margin-right: 5px;
+            flex-basis: auto;
+        }
+
+        .form-group.inline-fields > div input[type="radio"] {
+            flex-basis: auto;
+        }
+
+        .button-container {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .export-button {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .export-button:hover {
+            background-color: #218838;
+        }
+
+        .clear-button {
+            background-color: #dc3545;
+            color: white;
+            margin-left: 10px;
+        }
+
+        .clear-button:hover {
+            background-color: #c82333;
+        }
+
+        .signature-line {
+            border-top: 1px solid #000;
+            margin-top: 30px;
+            padding-top: 5px;
+            text-align: center;
+        }
+
+        .full-width {
+            width: 100%;
+        }
+
+        .half-width {
+            flex-basis: 48%;
+        }
+
+        .third-width {
+            flex-basis: 30%;
+        }
+
+        .two-thirds-width {
+            flex-basis: 65%;
+        }
+
+        .observation-area {
+            flex-basis: 100%;
+        }
+
+        /* Styles for PDF export (print) */
+        @media print {
+            body {
+                margin: 0;
+                padding: 3px; /* Further reduced padding */
+                background-color: #fff !important;
+                -webkit-print-color-adjust: exact;
+                font-size: 0.8em; /* Further reduced font size */
+            }
+            .container {
+                box-shadow: none !important;
+                border: none !important;
+                max-width: 100%;
+                padding: 8px; /* Further reduced padding */
+                border-radius: 0 !important; /* Remove container border radius */
+            }
+            h2 {
+                font-size: 1.3em; /* Further reduced heading size */
+                margin-bottom: 6px;
+                border-bottom: none !important; /* Remove heading bottom border */
+                color: #000 !important; /* Ensure black color for print */
+            }
+            .section-title {
+                font-size: 0.9em;
+                padding: 5px;
+                margin-bottom: 5px;
+                background-color: #e9ecef !important; /* Keep background for section titles */
+                border-radius: 0 !important; /* Remove section title border radius */
+                color: #495057 !important;
+            }
+            .form-group {
+                margin-bottom: 6px;
+                display: block;
+            }
+            .form-group label {
+                display: block;
+                margin-bottom: 1px;
+                font-size: 0.7em;
+                color: #000 !important; /* Ensure black color for labels */
+            }
+            .form-group input[type="text"],
+            .form-group input[type="email"],
+            .form-group input[type="number"],
+            .form-group select,
+            .form-group textarea {
+                display: none !important; /* Hide input fields */
+            }
+            .form-group.inline-fields > div {
+                display: inline-block;
+                margin-right: 8px;
+                text-align: center; /* También podrías necesitar centrar el div contenedor */
+            }
+            .form-group.inline-fields > div label {
+                text-align: center;
+                display: inline-block; /* Para que text-align funcione dentro del div */
+                width: auto; /* Ajustar el ancho según sea necesario */
+            }
+            .button-container {
+                display: none !important;
+            }
+            .export-button {
+                display: none !important;
+            }
+            .clear-button {
+                display: none !important;
+            }
+            .signature-line {
+                margin-top: 15px;
+                border-top: 1px solid #000; /* Keep signature line */
+            }
+            p {
+                color: #000 !important; /* Ensure paragraph text is black */
+                font-size: 0.8em;
+            }
+            .print-value {
+                display: block;
+                width: 100%;
+                padding: 3px 0;
+                font-size: 0.7em;
+                margin-bottom: 3px;
+                border-bottom: 1px solid #ccc; /* Add the underline */
+            }
+            .button-container {
+        display: none !important;
+    }
+    .export-button {
+        display: none !important;
+    }
+    .clear-button {
+        display: none !important;
+    }
+        }
+    </style>
+</head>
+<body>
+     <div id="login-page" class="login-container">
+        <h2>Iniciar Sesión</h2>
+        <form id="login-form"  >
+            <div class="form-group">
+                <label for="username">Nombre:</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Generar Contraseña e Ingresar</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="main-page" class="main-page">
+        <div class="user-info">
+           <img style="text-align:center; width: 100px; margin-top:0 auto;margin-bottom: 10px;" src="https://img.freepik.com/vector-gratis/circulo-azul-usuario-blanco_78370-4707.jpg" alt="Logo de Google">
+            <h2 id="welcome-name"></h2>
+            <div class="user-actions">
+                <button id="logout-button">Cerrar Sesión</button>
+                <button id="change-name-button">Cambiar Nombre de Acceso</button>
+            </div>
+        </div>
+    <div class="container">
+        <h2 style="text-align: center; color: black;margin-top: -10px;">SOLICITUD DE CUESTIONAMIENTO</h2>
+        <p style="font-size: 0.9em; color: red; font-style: italic;">* Información obligatoria</p>
+
+        <div class="section-title"style="font-size: 12px; background-color:#6d9eeb; color: black;">1. DATOS GENERALES:</div>
+
+        <div class="section-title"style="background-color:#a4c2f4; color: black;font-size: 12px">DATOS DEL ABONADO:</div>
+        <div class="form-group full-width">
+            <label for="abonado_nombre">Nombre y Apellidos del abonado *:</label>
+            <input type="text" id="abonado_nombre" required>
+        </div>
+        <div class="form-group inline-fields full-width">
+            <div>
+                <label>Tipo de Documento de Identidad *:</label>
+            </div>
+            <div>
+                <input type="radio" id="dni_abonado" name="tipo_doc_abonado" value="DNI" required>
+                <label for="dni_abonado">DNI</label>
+            </div>
+            <div>
+                <input type="radio" id="ce_abonado" name="tipo_doc_abonado" value="CE">
+                <label for="ce_abonado">CE</label>
+            </div>
+            <div>
+                <input type="radio" id="pasaporte_abonado" name="tipo_doc_abonado" value="PASAPORTE">
+                <label for="pasaporte_abonado">PASAPORTE</label>
+            </div>
+            <div>
+                <input type="radio" id="ruc_abonado" name="tipo_doc_abonado" value="RUC">
+                <label for="ruc_abonado">RUC</label>
+            </div>
+        </div>
+        <div class="form-group full-width">
+            <label for="abonado_nro_doc">N° de Documento *:</label>
+            <input type="text" id="abonado_nro_doc" required>
+        </div>
+
+        <div class="section-title"style="background-color:#a4c2f4; color: black;font-size: 12px">DATOS DEL REPRESENTANTE LEGAL</div>
+        <div class="form-group full-width">
+            <label for="representante_nombre">Nombres y Apellidos del Representante Legal:</label>
+            <input type="text" id="representante_nombre">
+        </div>
+        <div class="form-group inline-fields full-width">
+            <div>
+                <label>Tipo de Documento de Identidad:</label>
+            </div>
+            <div>
+                <input type="radio" id="dni_representante" name="tipo_doc_representante" value="DNI">
+                <label for="dni_representante">DNI</label>
+            </div>
+            <div>
+                <input type="radio" id="ce_representante" name="tipo_doc_representante" value="CE">
+                <label for="ce_representante">CE</label>
+            </div>
+            <div>
+                <input type="radio" id="pasaporte_representante" name="tipo_doc_representante" value="PASAPORTE">
+                <label for="pasaporte_representante">PASAPORTE</label>
+            </div>
+        </div>
+        <div class="form-group full-width">
+            <label for="representante_nro_doc">N° de Documento:</label>
+            <input type="text" id="representante_nro_doc">
+        </div>
+
+        <div class="section-title"style="background-color:
+#a4c2f4; color: black;font-size: 12px">DATOS PARA LA NOTIFICACIÓN Y CONTACTO</div>
+        <div class="form-group full-width">
+            <label for="domicilio">Domicilio *:</label>
+            <input type="text" id="domicilio" required style="margin-left: -168px;">
+        </div>
+        <div class="form-group inline-fields full-width">
+            <div class="third-width">
+                <label for="distrito">Distrito:</label>
+                <input type="text" id="distrito"style="max-width: 155px;">
+            </div>
+            <div class="third-width">
+                <label for="provincia">Provincia:</label>
+                <input type="text" id="provincia" style="max-width: 155px;">
+            </div>
+            <div class="third-width">
+                <label for="departamento">Departamento:</label>
+                <input type="text" id="departamento"style="max-width: 155px;">
+            </div>
+        </div>
+        <div class="form-group full-width">
+            <label for="correo_electronico">Correo Electrónico para recibir notificación:</label>
+            <input type="email" id="correo_electronico">
+        </div>
+        <div class="form-group full-width">
+            <label for="numero_contacto">Número de Contacto:</label>
+            <input type="number" id="numero_contacto">
+        </div>
+
+        <div class="section-title"style="font-size: 12px; background-color: 
+#6d9eeb; color: black;">2. DATOS DEL CUESTIONAMIENTO</div>
+        <div class="form-group full-width">
+            <label>Motivo del bloqueo del equipo terminal móvil *:</label>
+            <div class="radio-group">
+                <input type="radio" id="sustraccion" name="motivo_bloqueo" value="Sustraccion o perdida" required>
+                <label for="sustraccion">Sustracción o pérdida</label>
+                <input type="radio" id="deteccion_imei" name="motivo_bloqueo" value="Deteccion de IMEI Clonado">
+                <label for="deteccion_imei">Detección de IMEI Clonado</label>
+                <input type="radio" id="imei_invalido" name="motivo_bloqueo" value="Deteccion de IMEI Invalido">
+                <label for="imei_invalido">Detección de IMEI Inválido</label>
+                <input type="radio" id="otro_motivo" name="motivo_bloqueo" value="Otro">
+                <label for="otro_motivo">Otro (Indicar)</label>
+                <input type="text" id="otro_motivo_especificar" style="display: none; margin-left: 10px;" placeholder="Especificar">
+            </div>
+        </div>
+        <div class="form-group inline-fields full-width">
+            <div class="half-width">
+                <label for="marca">Marca:</label>
+                <input type="text" id="marca">
+            </div>
+            <div class="half-width">
+                <label for="modelo">Modelo:</label>
+                <input type="text" id="modelo">
+            </div>
+        </div>
+        <div class="form-group inline-fields full-width">
+            <div class="half-width">
+                <label for="imei_logico">IMEI Lógico:</label>
+                <input type="text" id="imei_logico">
+            </div>
+            <div class="half-width">
+                <label for="imei_fisico">IMEI Físico *:</label>
+                <input type="text" id="imei_fisico" required>
+            </div>
+        </div>
+        <div class="form-group full-width">
+            <label for="numero_servicio">Número de servicio móvil utilizado con el equipo *:</label>
+            <input type="text" id="numero_servicio" required>
+        </div>
+        <div class="form-group full-width">
+            <label>Equipo Adquirido en Empresa Operadora *:</label>
+            <div class="radio-group">
+                <input type="radio" id="no_adquirido" name="equipo_adquirido" value="NO" required>
+                <label for="no_adquirido">NO</label>
+                <input type="radio" id="si_adquirido" name="equipo_adquirido" value="SI">
+                <label for="si_adquirido">SI</label>
+                <label for="empresa_operadora" style="margin-left: 20px;">De Marcar SI, Indicar la Empresa operadora:</label>
+                <input type="text" id="empresa_operadora" style="margin-left: 5px; display: none;">
+            </div>
+        </div>
+        <div class="form-group full-width">
+            <label for="observaciones">Observaciones del abonado (adquisición en otro lugar, si fue comprado a otra persona, algún detalle que considere relevante):</label>
+            <textarea id="observaciones" rows="3" class="observation-area"></textarea>
+        </div>
+
+        <div class="section-title"style="font-size: 12px; background-color: 
+#6d9eeb; color: black;">3. RESULTADO</div>
+        <div class="form-group full-width">
+            <label>Empresa Operadora declara PROCEDENTE:</label>
+            <div class="radio-group">
+                <input type="radio" id="procedente_no" name="resultado_procedente" value="NO">
+                <label for="procedente_no">NO</label>
+                <input type="radio" id="procedente_si" name="resultado_procedente" value="SI">
+                <label for="procedente_si">SI</label>
+            </div>
+        </div>
+        <div class="form-group full-width">
+            <label for="codigo_desbloqueo" style="font-style: italic;">En caso PROCEDE Código de desbloqueo / habilitación:</label>
+            <input type="text" id="codigo_desbloqueo">
+        </div>
+        <div class="form-group full-width">
+            <label for="sustento_no_procede" style="font-style: italic;">Detallar sustento por el cual el cuestionamiento NO PROCEDE:</label>
+            <textarea id="sustento_no_procede" rows="2" class="observation-area" placeholder="Llenar solo cuando la empresa operadora ha determinado que el cuestionamiento NO PROCEDE" disabled></textarea>
+        </div>
+        <div class="form-group full-width">
+            <label>El abonado requiere se eleve su cuestionamiento para revisión del OSIPTEL:</label>
+            <div class="radio-group">
+                <input type="radio" id="osiptel_no" name="revision_osiptel" value="NO">
+                <label for="osiptel_no">NO</label>
+                <input type="radio" id="osiptel_si" name="revision_osiptel" value="SI">
+                <label for="osiptel_si">SI</label>
+            </div>
+        </div>
+        <div class="form-group full-width">
+            <label for="codigo_derivacion">Código de derivación del caso al OSIPTEL:</label>
+            <input type="text" id="codigo_derivacion">
+        </div>
+        <div class="form-group full-width">
+            <p style="font-size: 0.9em; margin-top: -10px;">El abonado declara que en caso de brindar información falsa se somete a las responsabilidades administrativas, civiles y o penales correspondientes.</p>
+        </div>
+        <div class="form-group full-width">
+            <label for="fecha_recepcion" style="margin-top: -28px;">Fecha de recepción del cuestionamiento:</label>
+            <input type="date" id="fecha_recepcion" style="margin-top: -28px;">
+        </div>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 50px; margin-left: 100px;">
+            <div style="text-align: center;">
+                <div class="signature-line"></div>
+                <label>Sello y Firma del Asesor</label>
+            </div>
+            <div style="text-align:center; margin-right: 100px; ">
+                <div class="signature-line"></div>
+                <label>Firma del Abonado</label>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button class="button export-button" onclick="exportToPDF()">EXPORTAR PDF</button>
+            <button class="button clear-button" onclick="clearForm()">NUEVO REGISTRO</button>
+        </div>
+    </div>
+
+<div id="change-name-modal" class="modal">
+        <div class="modal-content">
+            <h2>Cambiar Nombre de Acceso</h2>
+            <input type="text" id="new-username" placeholder="Nuevo nombre">
+            <button id="confirm-change-name">Confirmar</button>
+            <button id="cancel-change-name">Cancelar</button>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+
+<script>
+        const loginPage = document.getElementById('login-page');
+        const mainPage = document.getElementById('main-page');
+        const loginForm = document.getElementById('login-form');
+        const welcomeName = document.getElementById('welcome-name');
+        const logoutButton = document.getElementById('logout-button');
+        const changeNameButton = document.getElementById('change-name-button');
+        const changeNameModal = document.getElementById('change-name-modal');
+        const newUsernameInput = document.getElementById('new-username');
+        const confirmChangeNameButton = document.getElementById('confirm-change-name');
+        const cancelChangeNameButton = document.getElementById('cancel-change-name');
+
+        function generateRandomPassword(length = 10) {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let password = '';
+            for (let i = 0; i < length; i++) {
+                password += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return password;
+        }
+
+        function showMainPage(username) {
+            loginPage.style.display = 'none';
+            mainPage.style.display = 'block';
+            welcomeName.textContent = `Bienvenido, ${username}`;
+        }
+
+        function showLoginPage() {
+            loginPage.style.display = 'flex';
+            mainPage.style.display = 'none';
+        }
+
+        function checkLogin() {
+            const username = localStorage.getItem('username');
+            if (username) {
+                showMainPage(username);
+            } else {
+                showLoginPage();
+            }
+        }
+
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const usernameInput = document.getElementById('username');
+            const username = usernameInput.value.trim();
+
+            if (username) {
+                let password = localStorage.getItem(username);
+                if (!password) {
+                    password = generateRandomPassword();
+                    localStorage.setItem(username, password);
+                    alert(`Bienvenido ${username}, tu contraseña es: ${password} (Guárdala bien!).`);
+                } else {
+                    alert(`Bienvenido de nuevo, ${username}!`);
+                }
+                localStorage.setItem('username', username);
+                showMainPage(username);
+            } else {
+                alert('Por favor, ingresa tu nombre.');
+            }
+        });
+
+        logoutButton.addEventListener('click', function() {
+            localStorage.removeItem('username');
+            showLoginPage();
+        });
+
+        changeNameButton.addEventListener('click', function() {
+            changeNameModal.style.display = 'flex';
+            newUsernameInput.value = localStorage.getItem('username') || '';
+        });
+
+        cancelChangeNameButton.addEventListener('click', function() {
+            changeNameModal.style.display = 'none';
+        });
+
+        confirmChangeNameButton.addEventListener('click', function() {
+            const oldUsername = localStorage.getItem('username');
+            const newUsername = newUsernameInput.value.trim();
+            if (newUsername && newUsername !== oldUsername) {
+                const password = localStorage.getItem(oldUsername);
+                localStorage.removeItem(oldUsername);
+                localStorage.setItem(newUsername, password);
+                localStorage.setItem('username', newUsername);
+                welcomeName.textContent = `Bienvenido, ${newUsername}`;
+                changeNameModal.style.display = 'none';
+                alert('Nombre de acceso cambiado exitosamente.');
+            } else if (newUsername === oldUsername) {
+                alert('El nuevo nombre debe ser diferente al actual.');
+            } else {
+                alert('Por favor, ingresa un nuevo nombre.');
+            }
+        });
+
+        // Check login status on page load
+        checkLogin();
+
+        // Existing script for handling form elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const otroMotivoRadio = document.getElementById('otro_motivo');
+            const otroMotivoEspecificarInput = document.getElementById('otro_motivo_especificar');
+
+            otroMotivoRadio.addEventListener('change', function() {
+                otroMotivoEspecificarInput.style.display = this.checked ? 'inline-block' : 'none';
+                if (!this.checked) {
+                    otroMotivoEspecificarInput.value = '';
+                }
+            });
+
+            const siAdquiridoRadio = document.getElementById('si_adquirido');
+            const empresaOperadoraInput = document.getElementById('empresa_operadora');
+
+            siAdquiridoRadio.addEventListener('change', function() {
+                empresaOperadoraInput.style.display = this.checked ? 'inline-block' : 'none';
+                if (!this.checked) {
+                    empresaOperadoraInput.value = '';
+                }
+            });
+
+            const procedenteNoRadio = document.getElementById('procedente_no');
+            const sustentoNoProcedeTextarea = document.getElementById('sustento_no_procede');
+
+            procedenteNoRadio.addEventListener('change', function() {
+                sustentoNoProcedeTextarea.disabled = !this.checked;
+                if (!this.checked) {
+                    sustentoNoProcedeTextarea.value = '';
+                } else {
+                    sustentoNoProcedeTextarea.focus();
+                }
+            });
+        });
+
+
+
+</script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const otroMotivoRadio = document.getElementById('otro_motivo');
+            const otroMotivoEspecificarInput = document.getElementById('otro_motivo_especificar');
+
+            otroMotivoRadio.addEventListener('change', function() {
+                otroMotivoEspecificarInput.style.display = this.checked ? 'inline-block' : 'none';
+                if (!this.checked) {
+                    otroMotivoEspecificarInput.value = '';
+                }
+            });
+
+            const siAdquiridoRadio = document.getElementById('si_adquirido');
+            const empresaOperadoraInput = document.getElementById('empresa_operadora');
+
+            siAdquiridoRadio.addEventListener('change', function() {
+                empresaOperadoraInput.style.display = this.checked ? 'inline-block' : 'none';
+                if (!this.checked) {
+                    empresaOperadoraInput.value = '';
+                }
+            });
+
+            const procedenteNoRadio = document.getElementById('procedente_no');
+            const sustentoNoProcedeTextarea = document.getElementById('sustento_no_procede');
+
+            procedenteNoRadio.addEventListener('change', function() {
+                sustentoNoProcedeTextarea.disabled = !this.checked;
+                if (!this.checked) {
+                    sustentoNoProcedeTextarea.value = '';
+                } else {
+                    sustentoNoProcedeTextarea.focus();
+                }
+            });
+        });
+
+        function exportToPDF() {
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const container = document.querySelector('.container');
+            const buttonContainer = document.querySelector('.button-container');
+            let originalButtonContainerParent = null;
+            let originalButtonContainerSibling = null;
+
+            if (buttonContainer) {
+                originalButtonContainerParent = buttonContainer.parentNode;
+                originalButtonContainerSibling = buttonContainer.nextSibling;
+                buttonContainer.remove();
+            }
+
+            html2canvas(container, {
+                scale: 2,
+                backgroundColor: 'white'
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = pdf.internal.pageSize.getHeight();
+                const canvasWidth = canvas.width;
+                const canvasHeight = canvas.height;
+
+                let widthRatio = pdfWidth / canvasWidth;
+                let heightRatio = pdfHeight / canvasHeight;
+                let scaleFactor = Math.min(widthRatio, heightRatio);
+
+                let imgWidth = canvasWidth * scaleFactor - 1; // Adjust margins
+                let imgHeight = canvasHeight * scaleFactor;
+
+                let xPosition = (pdfWidth - imgWidth) / 2;
+                let yPosition = 1;
+
+                pdf.addImage(imgData, 'PNG', xPosition, yPosition, imgWidth, imgHeight);
+
+                // Add signature lines after the image
+                const signatureMargin = 100; // Margin from the bottom of the image
+                const signatureY = yPosition + imgHeight + signatureMargin;
+                const pageWidth = pdf.internal.pageSize.getWidth();
+                const signatureLineWidth = pageWidth / 3;
+                const signatureXStart1 = pageWidth / 6;
+                const signatureXStart2 = pageWidth * 4 / 6;
+
+                pdf.line(signatureXStart1, signatureY, signatureXStart1 + signatureLineWidth, signatureY);
+                pdf.text("Sello y Firma del asesor", signatureXStart1, signatureY + 10, { align: 'center' });
+
+                pdf.line(signatureXStart2, signatureY, signatureXStart2 + signatureLineWidth, signatureY);
+                pdf.text("Firma del Abonado", signatureXStart2, signatureY + 10, { align: 'center' });
+
+                // Check if signatures go beyond the page, if so, add a new page
+                if (signatureY + 20 > pdfHeight) {
+                    pdf.addPage('a4', 'p');
+                    const newSignatureY = 20; // Position on the new page
+                    pdf.line(signatureXStart1, newSignatureY, signatureXStart1 + signatureLineWidth, newSignatureY);
+                    pdf.text("Sello y Firma del asesor", signatureXStart1, newSignatureY + 10, { align: 'center' });
+                    pdf.line(signatureXStart2, newSignatureY, signatureXStart2 + signatureLineWidth, newSignatureY);
+                    pdf.text("Firma del Abonado", signatureXStart2, newSignatureY + 10, { align: 'center' });
+                }
+
+                // Add the button container back to the DOM
+                if (originalButtonContainerParent && buttonContainer) {
+                    if (originalButtonContainerSibling) {
+                        originalButtonContainerParent.insertBefore(buttonContainer, originalButtonContainerSibling);
+                    } else {
+                        originalButtonContainerParent.appendChild(buttonContainer);
+                    }
+                }
+
+                pdf.save('CUESTIONAMIENTO_ENTEL.pdf');
+            }).catch(error => {
+                console.error("Error al convertir HTML a canvas:", error);
+                alert("Ocurrió un error al generar el PDF. Por favor, revisa la consola para más detalles.");
+            });
+        }
+
+        function clearForm() {
+            const formElements = document.querySelectorAll('.container input[type="text"], .container input[type="email"], .container input[type="number"], .container select, .container textarea, .container input[type="radio"], .container input[type="date"]');
+            formElements.forEach(element => {
+                if (element.type === 'radio') {
+                    element.checked = false;
+                } else {
+                    element.value = '';
+                }
+            });
+            document.querySelectorAll('input[name="tipo_doc_abonado"]').forEach(radio => radio.checked = false);
+            document.querySelectorAll('input[name="tipo_doc_representante"]').forEach(radio => radio.checked = false);
+            document.querySelectorAll('input[name="motivo_bloqueo"]').forEach(radio => radio.checked = false);
+            document.getElementById('otro_motivo_especificar').style.display = 'none';
+            document.querySelectorAll('input[name="equipo_adquirido"]').forEach(radio => radio.checked = false);
+            document.getElementById('empresa_operadora').style.display = 'none';
+            document.querySelectorAll('input[name="resultado_procedente"]').forEach(radio => radio.checked = false);
+            document.getElementById('sustento_no_procede').disabled = true;
+            document.querySelectorAll('input[name="revision_osiptel"]').forEach(radio => radio.checked = false);
+        }
+    </script>
+</body>
+</html>
